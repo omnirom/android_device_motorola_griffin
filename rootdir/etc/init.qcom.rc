@@ -359,7 +359,9 @@ on boot
    write /sys/module/binder/parameters/debug_mask 0x5
 
 on fs
-    wait /dev/block/bootdevice
+    wait /dev/block/platform/soc/${ro.boot.bootdevice}
+    symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
+
     mount_all fstab.qcom
     swapon_all fstab.qcom
 
