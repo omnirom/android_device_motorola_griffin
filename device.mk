@@ -255,10 +255,11 @@ PRODUCT_PACKAGES += \
 
 # NFC
 PRODUCT_PACKAGES += \
+    libnfc-nci \
+    libnfc_nci_jni \
     com.android.nfc_extras \
-    com.nxp.nfc.nq \
-    nfc_nci.nqx.default \
-    NQNfcNci \
+    nfc_nci.pn54x.default \
+    NfcNci \
     nqnfcee_access.xml \
     nqnfcse_access.xml \
     Tag
