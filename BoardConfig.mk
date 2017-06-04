@@ -206,6 +206,9 @@ TARGET_PER_MGR_ENABLED := true
 BOARD_USES_CYANOGEN_HARDWARE := true
 BOARD_HARDWARE_CLASS += hardware/cyanogen/cmhw
 
+# Increase coldboot timeout
+TARGET_INCREASES_COLDBOOT_TIMEOUT := tru
+
 # Media
 TARGET_USES_MEDIA_EXTENSIONS := true
 
