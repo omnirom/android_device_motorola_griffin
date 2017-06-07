@@ -258,7 +258,7 @@ PRODUCT_PACKAGES += \
     libnfc-nci \
     libnfc_nci_jni \
     com.android.nfc_extras \
-    nfc_nci.griffin \
+    nfc_nci.qcom \
     NfcNci \
     nqnfcee_access.xml \
     nqnfcse_access.xml \
