@@ -97,7 +97,6 @@ TARGET_QCOM_BLUETOOTH_VARIANT := caf-msm8996
 
 # Kernel
 BOARD_KERNEL_BASE := 0x80000000
-#BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 cma=32M@0-0xffffffff
 BOARD_KERNEL_CMDLINE += cnsscore.pcie_link_down_panic=1
 BOARD_KERNEL_PAGESIZE := 4096
@@ -201,10 +200,6 @@ USE_SENSOR_MULTI_HAL := true
 
 # Enable peripheral manager
 TARGET_PER_MGR_ENABLED := true
-
-# CMHW
-BOARD_USES_CYANOGEN_HARDWARE := true
-BOARD_HARDWARE_CLASS += hardware/cyanogen/cmhw
 
 # Increase coldboot timeout
 TARGET_INCREASES_COLDBOOT_TIMEOUT := true
