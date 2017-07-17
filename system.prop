@@ -238,3 +238,6 @@ wifi.fccutild.load.qcacld=true
 
 ## XLAT
 persist.net.doxlat=true
+
+# misc
+ro.build.selinux=1
