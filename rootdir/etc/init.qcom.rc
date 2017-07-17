@@ -25,6 +25,7 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
+import init.omni.rc
 import init.qcom.power.rc
 import init.mmi.usb.rc
 
@@ -247,7 +248,7 @@ on boot
     chown system system /sys/kernel/debug/clk/gpu_gx_gfx3d_clk/rate_stats
     chmod 0660 /sys/kernel/debug/clk/gpu_gx_gfx3d_clk/rate_stats
     write /sys/kernel/debug/clk/gpu_gx_gfx3d_clk/rate_stats 1
-	
+
     # Set graphic node permissions
     chown system graphics /sys/class/graphics/fb0/mdp/bw_mode_bitmap
     chown system graphics /sys/class/graphics/fb0/idle_time
