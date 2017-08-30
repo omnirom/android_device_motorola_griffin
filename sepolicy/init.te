@@ -13,6 +13,7 @@ allow init system_data_file:file { rename append write };
 allow init firmware_file:dir mounton;
 
 allow init debugfs:file write;
+allow init debugfs:dir mounton;
 
 # ptt_socket_app
 allow init dnsproxyd_socket:sock_file write;
