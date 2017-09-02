@@ -118,12 +118,10 @@ PRODUCT_PACKAGES += \
 
 # Display
 PRODUCT_PACKAGES += \
-    copybit.msm8996 \
     gralloc.msm8996 \
     hwcomposer.msm8996 \
     memtrack.msm8996 \
-    liboverlay \
-    libtinyxml
+    libgenlock
 
 # Ebtables
 PRODUCT_PACKAGES += \
@@ -131,9 +129,9 @@ PRODUCT_PACKAGES += \
     ethertypes \
     libebtc
 
-# Fingerprint sensor
+# Fingerprint
 PRODUCT_PACKAGES += \
-    fingerprintd
+    fingerprint.msm8996
 
 # GPS
 PRODUCT_PACKAGES += \
