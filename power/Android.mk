@@ -21,9 +21,7 @@ endif
 #    LOCAL_CFLAGS += -DEXTRA_POWERHAL_HINTS
 #endif
 
-ifneq ($(TARGET_TAP_TO_WAKE_NODE),)
-LOCAL_CFLAGS += -DTAP_TO_WAKE_NODE=\"$(TARGET_TAP_TO_WAKE_NODE)\"
-endif
+LOCAL_CFLAGS += -Wno-unused-parameter
 
 LOCAL_MODULE := power.msm8996
 LOCAL_MODULE_TAGS := optional
