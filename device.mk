@@ -78,7 +78,9 @@ PRODUCT_PACKAGES += \
     SnapdragonCamera \
     libbson \
     libshim_camera \
-    libcamera_shim
+    libcamera_shim \
+    camera.device@3.2-impl \
+    android.hardware.camera.provider@2.4-impl
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -93,7 +95,14 @@ PRODUCT_PACKAGES += \
     libqcomvoiceprocessingdescriptors \
     libtinycompress \
     libtinyxml \
+    libaudioroute \
     tinymix
+
+PRODUCT_PACKAGES += \
+		android.hardware.audio@2.0-impl \
+		android.hardware.audio.effect@2.0-impl \
+		android.hardware.broadcastradio@1.0-impl \
+		android.hardware.soundtrigger@2.0-impl
 
 # Audio configuration
 PRODUCT_COPY_FILES += \
@@ -104,24 +113,44 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/mixer_paths.xml:system/etc/mixer_paths.xml \
     $(LOCAL_PATH)/audio/audio_ext_spkr.conf:system/etc/audio_ext_spkr.conf
 
+# Bluetooth
+PRODUCT_PACKAGES += \
+    libbt-vendor \
+    android.hardware.bluetooth@1.0-impl
+
 # Connectivity Engine support (CNE)
 PRODUCT_PACKAGES += \
     cneapiclient \
     com.quicinc.cne \
     services-ext
 
+# DRM
+PRODUCT_PACKAGES += \
+    android.hardware.drm@1.0-impl \
+
 # Display
 PRODUCT_PACKAGES += \
-    copybit.msm8996 \
-    gralloc.msm8996 \
+    android.hardware.graphics.allocator@2.0-impl \
+    android.hardware.graphics.allocator@2.0-service \
+    android.hardware.graphics.composer@2.1-impl \
+    android.hardware.graphics.mapper@2.0-impl \
+    android.hardware.memtrack@1.0-impl \
     hwcomposer.msm8996 \
-    memtrack.msm8996 \
-    liboverlay \
-    libtinyxml
+    gralloc.msm8996 \
+    libgenlock \
+    memtrack.msm8996
+
+# Dumpstate HAL
+PRODUCT_PACKAGES += \
+    android.hardware.dumpstate@1.0-service.msm8996
 
 # Fingerprint sensor
 PRODUCT_PACKAGES += \
-    fingerprintd
+    android.hardware.biometrics.fingerprint@2.1-service
+
+# GNSS HAL
+PRODUCT_PACKAGES += \
+    android.hardware.gnss@1.0-impl
 
 # GPS
 PRODUCT_PACKAGES += \
@@ -141,9 +170,24 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/display/qdcm_calib_data_mipi_mot_cmd_smd_QHD_546_g.xml:system/etc/qdcm_calib_data_mipi_mot_cmd_smd_QHD_546_g.xml \
     $(LOCAL_PATH)/display/qdcm_calib_data_mipi_mot_cmd_smd_QHD_546_p.xml:system/etc/qdcm_calib_data_mipi_mot_cmd_smd_QHD_546_p.xml
 
+# Gatekeeper HAL
+PRODUCT_PACKAGES += \
+    android.hardware.gatekeeper@1.0-impl \
+    android.hardware.gatekeeper@1.0-service
+
+# HIDL
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/manifest.xml:system/vendor/manifest.xml
+
+# Keymaster HAL
+PRODUCT_PACKAGES += \
+    android.hardware.keymaster@3.0-impl \
+    android.hardware.keymaster@3.0-service
+
 # Lights
 PRODUCT_PACKAGES += \
-    lights.msm8996
+    lights.msm8996 \
+    android.hardware.light@2.0-impl
 
 # LiveDisplay native
 PRODUCT_PACKAGES += \
@@ -179,11 +223,17 @@ PRODUCT_PACKAGES += \
 
 # Power
 PRODUCT_PACKAGES += \
+    android.hardware.power@1.0-impl \
     power.msm8996
 
 # QMI
 PRODUCT_PACKAGES += \
-    libjson
+    libjson \
+    libtinyxml
+
+# RenderScript HAL
+PRODUCT_PACKAGES += \
+    android.hardware.renderscript@1.0-impl
 
 # Ramdisk
 PRODUCT_PACKAGES += \
@@ -207,11 +257,28 @@ PRODUCT_PACKAGES += \
 
 # Sensors
 PRODUCT_PACKAGES += \
+    android.hardware.sensors@1.0-impl \
     sensors.msm8996
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sensors/sensor_def_qcomdev.conf:system/etc/sensors/sensor_def_qcomdev.conf \
     $(LOCAL_PATH)/configs/sensors/hals.conf:system/etc/sensors/hals.conf
+
+# USB HAL
+PRODUCT_PACKAGES += \
+    android.hardware.usb@1.0-service
+
+# Vibrator
+PRODUCT_PACKAGES += \
+    android.hardware.vibrator@1.0-impl
+
+# VR
+PRODUCT_PACKAGES += \
+		    android.hardware.vr@1.0-impl
+
+# WiFi HAL
+PRODUCT_PACKAGES += \
+		android.hardware.wifi@1.0-service
 
 PRODUCT_PACKAGES += \
     ipacm \
@@ -219,6 +286,8 @@ PRODUCT_PACKAGES += \
     IPACM_cfg.xml \
     libqsap_sdk \
     libQWiFiSoftApCfg \
+    wificond \
+    wifilogd \
     libwpa_client \
     hostapd \
     dhcpcd.conf \
@@ -258,7 +327,8 @@ PRODUCT_PACKAGES += \
     NfcNci \
     nqnfcee_access.xml \
     nqnfcse_access.xml \
-    Tag
+    Tag \
+    android.hardware.nfc@1.0-impl
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/nfc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
@@ -294,3 +364,6 @@ PRODUCT_PACKAGES += \
    ebtables \
    ethertypes \
    libebtc
+
+# MSM8996 Headers
+PRODUCT_VENDOR_KERNEL_HEADERS := hardware/qcom/msm8996/kernel-headers
