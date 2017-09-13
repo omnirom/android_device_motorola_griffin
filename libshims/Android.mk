@@ -21,7 +21,7 @@ LOCAL_SRC_FILES := \
     SensorManager.cpp \
     moto_camera_misc.c
 
-LOCAL_SHARED_LIBRARIES := libutils libgui liblog libbinder
+LOCAL_SHARED_LIBRARIES := libutils libsensor liblog libbinder
 LOCAL_MODULE := libshim_camera
 LOCAL_MODULE_TAGS := optional
 LOCAL_32_BIT_ONLY := true
