@@ -24,8 +24,8 @@
 BOARD_VENDOR := motorola-qcom
 PLATFORM_PATH := device/motorola/griffin
 TARGET_FS_CONFIG_GEN += \
-    $(PLATFORM_PATH)/fs_config/file_caps.fs \
-    $(PLATFORM_PATH)/fs_config/mot_aids.fs
+    $(PLATFORM_PATH)/fs_config/config.fs \
+    $(PLATFORM_PATH)/fs_config/moto_config.fs
 
 # OTA
 TARGET_OTA_ASSERT_DEVICE := griffin,griffin_cn,sheridan,xt1650,xt1650-01,xt1650-03,xt1650-05
