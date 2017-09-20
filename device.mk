@@ -14,6 +14,7 @@
 # limitations under the License.
 #
 
+$(call inherit-product, device/motorola/griffin/hidl.mk)
 
 # Permissions
 PRODUCT_COPY_FILES += \
