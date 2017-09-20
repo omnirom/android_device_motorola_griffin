@@ -28,7 +28,7 @@ TARGET_FS_CONFIG_GEN += \
     $(PLATFORM_PATH)/fs_config/moto_config.fs
 
 # OTA
-TARGET_OTA_ASSERT_DEVICE := griffin,griffin_cn,sheridan,xt1650,xt1650-01,xt1650-03,xt1650-05
+TARGET_OTA_ASSERT_DEVICE := none
 
 # Platform
 TARGET_BOARD_PLATFORM := msm8996
