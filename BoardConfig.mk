@@ -153,6 +153,10 @@ BOARD_CHARGER_DISABLE_INIT_BLANK := true
 TARGET_NO_RPC := true
 USE_DEVICE_SPECIFIC_GPS := true
 
+# HIDL
+DEVICE_MANIFEST_FILE := $(PLATFORM_PATH)/manifest.xml
+DEVICE_MATRIX_FILE := $(PLATFORM_PATH)/compatibility_matrix.xml
+
 # Protobuf-c is supported in this build
 PROTOBUF_SUPPORTED := true
 
