@@ -29,14 +29,19 @@
 
 #include "vendor_init.h"
 #include "property_service.h"
-#include "log.h"
-#include "util.h"
+#include <utils/Log.h>
+#include <android-base/properties.h>
+
+using android::base::GetProperty;
+
+namespace android {
+namespace init {
 
 /* Target-Specific Dalvik Heap & HWUI Configuration */
 void target_ram() {
     std::string ram;
 
-    ram = property_get("ro.boot.ram");
+    ram = GetProperty("ro.boot.ram", "");
 
     // TODO: VZW has different settings here as they have more ram
 }
@@ -44,7 +49,7 @@ void target_ram() {
 void num_sims() {
     std::string dualsim;
 
-    dualsim = property_get("ro.boot.dualsim");
+    dualsim = GetProperty("ro.boot.dualsim", "false");
     property_set("ro.hw.dualsim", dualsim.c_str());
 
     if (dualsim == "true") {
@@ -66,25 +71,23 @@ void vendor_load_properties()
     std::string device;
     std::string dualsim;
 
-    platform = property_get("ro.board.platform");
+    platform = GetProperty("ro.board.platform", "msm8996");
     if (platform != ANDROID_TARGET)
         return;
 
-    device_boot = property_get("ro.boot.device");
+    device_boot = GetProperty("ro.boot.device", "sheridan");
     property_set("ro.hw.device", device_boot.c_str());
 
     property_set("ro.product.device", "griffin");
 
-    sku = property_get("ro.boot.hardware.sku");
+    sku = GetProperty("ro.boot.hardware.sku", "XT1650-03");
     property_set("ro.product.model", sku.c_str());
 
-    carrier = property_get("ro.boot.carrier");
+    carrier = GetProperty("ro.boot.carrier", "reteu");
     property_set("ro.carrie", carrier.c_str());
 
-    radio = property_get("ro.boot.radio");
-    property_set("ro.hw.radio", radio.c_str());
-
-    dualsim = property_get("ro.boot.dualsim");
+//    radio = GetProperty("ro.boot.radio", "");
+//    property_set("ro.hw.radio", radio.c_str());
 
     /* Common for all models */
     property_set("ro.build.product", "griffin");
@@ -117,7 +120,7 @@ void vendor_load_properties()
             property_set("persist.radio.pb.min.match", "7");
             property_set("ro.ril.power_collapse", "1");
         }
-        
+
         property_set("ro.telephony.default_network", "10,0");
     }
 
@@ -159,6 +162,9 @@ void vendor_load_properties()
     property_set("persist.rcs.supported", "0");
     property_set("persist.rcs.presence.provision", "0");
 
-    device = property_get("ro.product.device");
-    INFO("Found sku id: %s setting build properties for %s device\n", sku.c_str(), device.c_str());
+    device = GetProperty("ro.product.device", "griffin");
+    ALOGI("Found sku id: %s setting build properties for %s device\n", sku.c_str(), device.c_str());
 }
+
+}  // namespace init
+}  // namespace android
