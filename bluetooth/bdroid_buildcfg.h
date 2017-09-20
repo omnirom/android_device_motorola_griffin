@@ -15,11 +15,13 @@
  * limitations under the License.
  */
 
-#ifndef _BDROID_BUILDCFG_H
-#define _BDROID_BUILDCFG_H
-#define BTM_DEF_LOCAL_NAME   "Moto Z"
-#define BTA_DISABLE_DELAY 1000 /* in milliseconds */
-#define BLUETOOTH_QCOM_SW TRUE
-#define BLUETOOTH_QCOM_LE_INTL_SCAN TRUE
-#define BTC_INCLUDED TRUE
-#endif
+ #ifndef _BDROID_BUILDCFG_H
+ #define _BDROID_BUILDCFG_H
+ #define BTM_DEF_LOCAL_NAME   "Moto Z"
+ #define BLUETOOTH_QTI_SW TRUE
+ #define MAX_ACL_CONNECTIONS   16
+ #define MAX_L2CAP_CHANNELS    16
+ #define BLE_VND_INCLUDED   TRUE
+ #define BT_CLEAN_TURN_ON_DISABLED 1
+ #define BTA_DISABLE_DELAY 1000 /* in milliseconds */
+ #endif
