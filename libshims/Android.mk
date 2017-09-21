@@ -21,8 +21,35 @@ LOCAL_SRC_FILES := \
     SensorManager.cpp \
     moto_camera_misc.c
 
-LOCAL_SHARED_LIBRARIES := libutils libsensor liblog libbinder
+LOCAL_SHARED_LIBRARIES := libutils libgui liblog libbinder libsensor
 LOCAL_MODULE := libshim_camera
 LOCAL_MODULE_TAGS := optional
 LOCAL_32_BIT_ONLY := true
+include $(BUILD_SHARED_LIBRARY)
+
+include $(CLEAR_VARS)
+LOCAL_SRC_FILES := get_process_name.c
+LOCAL_MODULE := libshims_get_process_name
+LOCAL_MODULE_TAGS := optional
+include $(BUILD_SHARED_LIBRARY)
+
+include $(CLEAR_VARS)
+LOCAL_SRC_FILES := rild_socket.c
+LOCAL_MODULE := rild_socket
+LOCAL_MODULE_TAGS := optional
+include $(BUILD_SHARED_LIBRARY)
+
+include $(CLEAR_VARS)
+LOCAL_SRC_FILES := MediaCodec.cpp
+LOCAL_SHARED_LIBRARIES := libstagefright libmedia
+LOCAL_MODULE := libshims_camera
+LOCAL_MODULE_TAGS := optional
+include $(BUILD_SHARED_LIBRARY)
+
+# RIL
+include $(CLEAR_VARS)
+LOCAL_SRC_FILES := sensor.cpp
+LOCAL_SHARED_LIBRARIES := libgui libsensor
+LOCAL_MODULE := libshim_ril
+LOCAL_MODULE_TAGS := optional
 include $(BUILD_SHARED_LIBRARY)

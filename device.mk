@@ -79,7 +79,8 @@ PRODUCT_PACKAGES += \
     SnapdragonCamera \
     libbson \
     libshim_camera \
-    libcamera_shim
+    libcamera_shim \
+    libshims_camera
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -105,6 +106,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/mixer_paths.xml:system/etc/mixer_paths.xml \
     $(LOCAL_PATH)/audio/audio_ext_spkr.conf:system/etc/audio_ext_spkr.conf
 
+# CMActions
+PRODUCT_PACKAGES += \
+    CMActions
+
 # Connectivity Engine support (CNE)
 PRODUCT_PACKAGES += \
     cneapiclient \
@@ -120,6 +125,12 @@ PRODUCT_PACKAGES += \
     liboverlay \
     libtinyxml
 
+# Ebtables
+PRODUCT_PACKAGES += \
+    ebtables \
+    ethertypes \
+    libebtc
+
 # Fingerprint sensor
 PRODUCT_PACKAGES += \
     fingerprintd
@@ -128,7 +139,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     gps.msm8996 \
     libcurl \
-    libgnsspps
+    libgnsspps \
+    libshims_get_process_name
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/gps/etc/flp.conf:system/etc/flp.conf \
@@ -204,7 +216,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     librmnetctl \
     libxml2 \
-    libprotobuf-cpp-full
+    libprotobuf-cpp-full \
+    libprotobuf-cpp-lite \
+    libshim_ril \
+    rild_socket
 
 # Sensors
 PRODUCT_PACKAGES += \
@@ -281,17 +296,3 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sec_config:system/etc/sec_config \
     $(LOCAL_PATH)/configs/dsi_config.xml:system/etc/data/dsi_config.xml \
     $(LOCAL_PATH)/configs/netmgr_config.xml:system/etc/data/netmgr_config.xml
-
-# CMActions
-PRODUCT_PACKAGES += \
-    CMActions
-
-# DRM
-PRODUCT_PACKAGES += \
-    libprotobuf-cpp-lite
-
-# Ebtables
-PRODUCT_PACKAGES += \
-   ebtables \
-   ethertypes \
-   libebtc
