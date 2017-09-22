@@ -84,17 +84,18 @@ PRODUCT_PACKAGES += \
 
 # Audio
 PRODUCT_PACKAGES += \
-    audiod \
+    audio.primary.msm8996 \
     audio.a2dp.default \
     audio.r_submix.default \
     audio.usb.default \
     libaudio-resampler \
-    libqcompostprocbundle \
     libqcomvisualizer \
     libqcomvoiceprocessing \
     libqcomvoiceprocessingdescriptors \
-    libtinycompress \
+    libqcompostprocbundle \
     libtinyxml \
+    libtinycompress \
+    libaudioroute \
     tinymix
 
 # Audio configuration
@@ -105,6 +106,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/listen_platform_info.xml:system/etc/listen_platform_info.xml \
     $(LOCAL_PATH)/audio/mixer_paths.xml:system/etc/mixer_paths.xml \
     $(LOCAL_PATH)/audio/audio_ext_spkr.conf:system/etc/audio_ext_spkr.conf
+
+# Bluetooth
+PRODUCT_PACKAGES += \
+    libbt-vendor
 
 # CMActions
 PRODUCT_PACKAGES += \
@@ -219,26 +224,32 @@ PRODUCT_PACKAGES += \
     libshim_ril \
     rild_socket
 
+# Seccomp policy
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/seccomp_policy/mediacodec.policy:system/vendor/etc/seccomp_policy/mediacodec.policy
+
 # Sensors
 PRODUCT_PACKAGES += \
     sensors.msm8996
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sensors/sensor_def_qcomdev.conf:system/etc/sensors/sensor_def_qcomdev.conf \
-    $(LOCAL_PATH)/configs/sensors/hals.conf:system/etc/sensors/hals.conf
+    $(LOCAL_PATH)/configs/sensors/hals.conf:system/vendor/etc/sensors/hals.conf
 
 PRODUCT_PACKAGES += \
     ipacm \
     ipacm-diag \
     IPACM_cfg.xml \
-    libqsap_sdk \
-    libQWiFiSoftApCfg \
+    wificond \
+    wifilogd \
     libwpa_client \
-    hostapd \
     dhcpcd.conf \
     wpa_supplicant \
     wpa_supplicant.conf \
-    wifi_symlinks
+    wifi_symlinks \
+    libqsap_sdk \
+    libnfnetlink \
+    libnetfilter_conntrack
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/hostapd.accept:system/etc/hostapd/hostapd.accept \
