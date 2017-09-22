@@ -70,8 +70,8 @@ on init
     chmod 0640 /sys/fs/pstore/dmesg-ramoops-0
 
     # Setup kernel dropbox permissions so that dropboxd can utilize it
-    chown root diag /sys/kernel/dropbox/event
-    chown root diag /sys/kernel/dropbox/data
+    chown root oem_2901 /sys/kernel/dropbox/event
+    chown root oem_2901 /sys/kernel/dropbox/data
 
     #ESDFS
     chown oem_5016 root /proc/fs/esdfs/packages
@@ -635,7 +635,7 @@ on post-fs-data
     mkdir /data/misc/sensorhub 0770 system compass
 
     # Setup folder for native to transfer data to NativeDropBoxAgent
-    mkdir /data/system/dropbox-add 0730 system diag
+    mkdir /data/system/dropbox-add 0730 system oem_2901
 
     # Create directory for cutback
     mkdir /data/misc/cutback 0770 radio wifi
@@ -679,7 +679,7 @@ on post-fs-data
     mkdir /data/hardware_revisions 0755 system system
 
     #Create directory for adspd
-    mkdir /data/adspd 0770 audio diag
+    mkdir /data/adspd 0770 audio oem_2901
 
     # Setup folder for camera dump subsystem
     mkdir /data/camera_dump 0750 media media
@@ -700,7 +700,7 @@ service perfd /system/vendor/bin/perfd
 service qcomsysd /system/bin/qcom-system-daemon
     class main
     user root
-    group root qcom_diag
+    group root oem_2901
 
 service ssr_setup /system/bin/ssr_setup
     oneshot
@@ -709,7 +709,7 @@ service ssr_setup /system/bin/ssr_setup
 service ss_ramdump /system/bin/subsystem_ramdump
     class main
     user system
-    group log sdcard_rw sdcard_r diag
+    group log sdcard_rw sdcard_r oem_2901
     disabled
 
 on property:persist.sys.ssr.restart_level=*
@@ -853,8 +853,8 @@ service mbm_spy /system/bin/mbm_spy
 
 service dropboxd /system/bin/dropboxd
     class late_start
-    user diag
-    group diag
+    user oem_2901
+    group oem_2901
 
 service hw_revs /system/bin/hardware_revisions.sh
     class late_start
@@ -913,7 +913,7 @@ service adspd /system/bin/adspd
    class main
    socket adspdsock stream 0660 system audio
    user audio
-   group audio input diag
+   group audio input oem_2901
 
 # Set RPS Mask for Wifi Hotspot
 on property:sys.wifi.tethering=true
@@ -956,7 +956,7 @@ on property:wc_transport.start_hci=false
 service start_hci_filter /system/bin/wcnss_filter
     class late_start
     user root
-    group bluetooth qcom_diag
+    group bluetooth oem_2901
     disabled
 
 on property:wc_transport.start_root=true
@@ -968,7 +968,7 @@ on property:wc_transport.start_root=false
 service hci_filter_root /system/bin/wcnss_filter
     class late_start
     user root
-    group bluetooth qcom_diag system
+    group bluetooth oem_2901 system
     disabled
 
 service config_bluetooth /system/bin/sh /system/etc/init.qcom.bt.sh "onboot"
@@ -994,13 +994,13 @@ service imsqmidaemon /system/bin/imsqmidaemon
     class main
     user system
     socket ims_qmid stream 0660 system radio
-    group radio log diag
+    group radio log oem_2901
 
 service imsdatadaemon /system/bin/imsdatadaemon
     class main
     user system
     socket ims_datad stream 0660 system radio
-    group system wifi radio inet log diag
+    group system wifi radio inet log oem_2901
     disabled
 
 on property:sys.ims.QMI_DAEMON_STATUS=1
@@ -1020,7 +1020,7 @@ service port-bridge /system/bin/port-bridge
 service qmuxd /system/bin/qmuxd
     class core
     user root
-    group radio audio bluetooth gps nfc diag qcom_diag
+    group radio audio bluetooth gps nfc oem_2901
     writepid /dev/cpuset/system-background/tasks
 
 service netmgrd /system/bin/netmgrd
@@ -1031,7 +1031,7 @@ service ipacm-diag /system/bin/ipacm-diag
     class main
     user system
     socket ipacm_log_file dgram 660 system net_admin
-    group net_admin qcom_diag
+    group net_admin oem_2901
 
 service ipacm /system/bin/ipacm
     class main
@@ -1042,7 +1042,7 @@ service ipacm /system/bin/ipacm
 service qti /system/vendor/bin/qti
     class main
     user radio
-    group radio net_raw qcom_diag usb net_admin
+    group radio net_raw oem_2901 usb net_admin
     writepid /dev/cpuset/system-background/tasks
 
 on property:ro.use_data_netmgrd=false
@@ -1135,7 +1135,7 @@ service cnss-daemon /system/bin/cnss-daemon -n
 service loc_launcher /system/bin/loc_launcher
     #loc_launcher will start as root and set its uid to gps
     class late_start
-    group gps inet qcom_diag wifi
+    group gps inet oem_2901 wifi
     writepid /dev/cpuset/system-background/tasks
 
 on property:crypto.driver.load=1
@@ -1164,14 +1164,14 @@ service ril-daemon /system/bin/rild
     socket rild-debug stream 660 radio system
     socket cutback stream 660 media radio
     user root
-    group radio cache inet misc audio log qcom_diag net_raw diag wifi compass
+    group radio cache inet misc audio log net_raw oem_2901 wifi compass
 
 service ril-daemon2 /system/bin/rild -c 2
     class main
     socket rild2 stream 660 root radio
     socket rild-debug2 stream 660 radio system
     user root
-    group radio cache inet misc audio sdcard_r sdcard_rw qcom_diag diag log
+    group radio cache inet misc audio sdcard_r sdcard_rw oem_2901 log
 
 service ril-daemon3 /system/bin/rild -c 3
     class main
@@ -1179,7 +1179,7 @@ service ril-daemon3 /system/bin/rild -c 3
     socket rild-debug3 stream 660 radio system
     user root
     disabled
-    group radio cache inet misc audio sdcard_r sdcard_rw qcom_diag diag log
+    group radio cache inet misc audio sdcard_r sdcard_rw oem_2901 log
 
 #service msm_irqbalance /system/bin/msm_irqbalance -f /system/vendor/etc/msm_irqbalance.conf
 #    class core
