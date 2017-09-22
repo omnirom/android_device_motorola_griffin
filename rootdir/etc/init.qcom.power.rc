@@ -1,4 +1,5 @@
 on boot
+    trigger enable-low-power
 
     # Set permissions by node reads by dumpstate
     chmod 0644 /sys/devices/system/cpu/present
@@ -98,7 +99,7 @@ on enable-low-power
      write /proc/sys/kernel/sched_freq_inc_notify 400000
      write /proc/sys/kernel/sched_freq_dec_notify 400000
      write /proc/sys/kernel/sched_spill_nr_run 3
-     write /proc/sys/kernel/sched_init_task_load 100 
+     write /proc/sys/kernel/sched_init_task_load 100
 
      # Enable bus-dcvs
      write /sys/class/devfreq/soc:qcom,cpubw/governor "bw_hwmon"
@@ -141,9 +142,6 @@ on charger
     write /sys/devices/system/cpu/cpu2/online 0
     write /sys/devices/system/cpu/cpu3/online 0
     write /sys/module/lpm_levels/parameters/sleep_disabled 0
-
-on class_start:late_start
-    trigger enable-low-power
 
 on property:init.svc.recovery=running
     trigger enable-low-power
