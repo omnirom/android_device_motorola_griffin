@@ -237,6 +237,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sensors/hals.conf:system/vendor/etc/sensors/hals.conf
 
 PRODUCT_PACKAGES += \
+    hostapd \
     ipacm \
     ipacm-diag \
     IPACM_cfg.xml \
