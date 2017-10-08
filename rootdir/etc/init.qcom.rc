@@ -76,10 +76,6 @@ on init
     #ESDFS
     chown oem_5016 root /proc/fs/esdfs/packages
 
-    # ZRAM
-    write /sys/block/zram0/comp_algorithm "lz4"
-    write /proc/sys/vm/swappiness 100
-
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
@@ -258,6 +254,7 @@ on boot
     chown system graphics /sys/class/graphics/fb0/mode
     chown system graphics /sys/class/graphics/fb0/msm_cmd_autorefresh_en
     chown system graphics /sys/class/graphics/fb1/res_info
+    chown system graphics /sys/class/graphics/fb2/res_info
     chmod 0664 /sys/class/graphics/fb0/mdp/bw_mode_bitmap
     chmod 0664 /sys/class/graphics/fb0/idle_time
     chmod 0664 /sys/class/graphics/fb0/dynamic_fps
@@ -266,114 +263,115 @@ on boot
     chmod 0664 /sys/class/graphics/fb0/mode
     chmod 0664 /sys/class/graphics/fb0/msm_cmd_autorefresh_en
     chmod 0664 /sys/class/graphics/fb1/res_info
+    chmod 0664 /sys/class/graphics/fb2/res_info
 
-   # update cpuset for each cgroup
-   write /dev/cpuset/foreground/cpus 0-3
-   write /dev/cpuset/foreground/boost/cpus 0-3
-   write /dev/cpuset/background/cpus 0-3
-   write /dev/cpuset/system-background/cpus 0-3
-   write /dev/cpuset/top-app/cpus 0-3
+    # update cpuset for each cgroup
+    write /dev/cpuset/foreground/cpus 0-3
+    write /dev/cpuset/foreground/boost/cpus 0-3
+    write /dev/cpuset/background/cpus 0-3
+    write /dev/cpuset/system-background/cpus 0-3
+    write /dev/cpuset/top-app/cpus 0-3
 
-   # STML4 driver parameter permissions
-   chown root oem_5004 /sys/module/motosh/parameters/irq_disable
-   chmod 0660 /sys/module/motosh/parameters/irq_disable
+    # STML4 driver parameter permissions
+    chown root oem_5004 /sys/module/motosh/parameters/irq_disable
+    chmod 0660 /sys/module/motosh/parameters/irq_disable
 
-   #STML4 device permissions
-   chown system compass /dev/motosh
-   chmod 0660 /dev/motosh
-   chown compass compass /dev/motosh_as
-   chmod 0660 /dev/motosh_as
-   chown compass compass /dev/motosh_ms
-   chmod 0660 /dev/motosh_ms
-   chown compass compass /sys/devices/virtual/motosh/motosh_as/timestamp_time_ns
-   chmod 0440 /sys/devices/virtual/motosh/motosh_as/timestamp_time_ns
-   chown compass compass /sys/devices/virtual/motosh/motosh_as/rv_6axis_update_rate
-   chmod 0660 /sys/devices/virtual/motosh/motosh_as/rv_6axis_update_rate
-   chown compass compass /sys/devices/virtual/motosh/motosh_as/rv_9axis_update_rate
-   chmod 0660 /sys/devices/virtual/motosh/motosh_as/rv_9axis_update_rate
-   chown compass compass /sys/devices/virtual/motosh/motosh_as/game_rv_update_rate
-   chmod 0660 /sys/devices/virtual/motosh/motosh_as/game_rv_update_rate
-   chown compass compass /sys/devices/virtual/motosh/motosh_as/gravity_update_rate
-   chmod 0660 /sys/devices/virtual/motosh/motosh_as/gravity_update_rate
-   chown compass compass /sys/devices/virtual/motosh/motosh_as/linear_accel_update_rate
-   chmod 0660 /sys/devices/virtual/motosh/motosh_as/linear_accel_update_rate
+    #STML4 device permissions
+    chown system compass /dev/motosh
+    chmod 0660 /dev/motosh
+    chown compass compass /dev/motosh_as
+    chmod 0660 /dev/motosh_as
+    chown compass compass /dev/motosh_ms
+    chmod 0660 /dev/motosh_ms
+    chown compass compass /sys/devices/virtual/motosh/motosh_as/timestamp_time_ns
+    chmod 0440 /sys/devices/virtual/motosh/motosh_as/timestamp_time_ns
+    chown compass compass /sys/devices/virtual/motosh/motosh_as/rv_6axis_update_rate
+    chmod 0660 /sys/devices/virtual/motosh/motosh_as/rv_6axis_update_rate
+    chown compass compass /sys/devices/virtual/motosh/motosh_as/rv_9axis_update_rate
+    chmod 0660 /sys/devices/virtual/motosh/motosh_as/rv_9axis_update_rate
+    chown compass compass /sys/devices/virtual/motosh/motosh_as/game_rv_update_rate
+    chmod 0660 /sys/devices/virtual/motosh/motosh_as/game_rv_update_rate
+    chown compass compass /sys/devices/virtual/motosh/motosh_as/gravity_update_rate
+    chmod 0660 /sys/devices/virtual/motosh/motosh_as/gravity_update_rate
+    chown compass compass /sys/devices/virtual/motosh/motosh_as/linear_accel_update_rate
+    chmod 0660 /sys/devices/virtual/motosh/motosh_as/linear_accel_update_rate
 
-   # Change permission for type C params
-   chown root oem_5004 /sys/devices/soc/75b5000.i2c/i2c-7/7-0022/CC_state
-   chown root oem_5004 /sys/devices/soc/75b5000.i2c/i2c-7/7-0022/enable_vconn
-   # Change ownership and permission for AMPS factory testing
-   chown root oem_5004 /sys/class/i2c-adapter/i2c-7/7-002d/enable
-   chmod 0660 /sys/class/i2c-adapter/i2c-7/7-002d/enable
-   chown root oem_5004 /sys/class/i2c-adapter/i2c-7/7-002d/hsic_vdd
-   chmod 0660 /sys/class/i2c-adapter/i2c-7/7-002d/hsic_vdd
+    # Change permission for type C params
+    chown root oem_5004 /sys/devices/soc/75b5000.i2c/i2c-7/7-0022/CC_state
+    chown root oem_5004 /sys/devices/soc/75b5000.i2c/i2c-7/7-0022/enable_vconn
+    # Change ownership and permission for AMPS factory testing
+    chown root oem_5004 /sys/class/i2c-adapter/i2c-7/7-002d/enable
+    chmod 0660 /sys/class/i2c-adapter/i2c-7/7-002d/enable
+    chown root oem_5004 /sys/class/i2c-adapter/i2c-7/7-002d/hsic_vdd
+    chmod 0660 /sys/class/i2c-adapter/i2c-7/7-002d/hsic_vdd
 
-   # restore default console_loglevel to KERN_DEBUG
-   # restore default_message_loglevel to KERN_WARNING
-   write /proc/sys/kernel/printk "7 4 1 7"
+    # restore default console_loglevel to KERN_DEBUG
+    # restore default_message_loglevel to KERN_WARNING
+    write /proc/sys/kernel/printk "7 4 1 7"
 
-   # Change ownership and permission for backlight
-   chown system system /sys/class/backlight/lcd-backlight:0/brightness
-   chmod 0664 /sys/class/backlight/lcd-backlight:0/brightness
-   chown system system /sys/class/backlight/lcd-backlight:0/max_brightness
-   chmod 0664 /sys/class/backlight/lcd-backlight:0/max_brightness
-   chmod 0664 /sys/class/leds/lcd-backlight/brightness
-   chown system system /sys/class/leds/charging/brightness
-   chmod 0664 /sys/class/leds/charging/brightness
+    # Change ownership and permission for backlight
+    chown system system /sys/class/backlight/lcd-backlight:0/brightness
+    chmod 0664 /sys/class/backlight/lcd-backlight:0/brightness
+    chown system system /sys/class/backlight/lcd-backlight:0/max_brightness
+    chmod 0664 /sys/class/backlight/lcd-backlight:0/max_brightness
+    chmod 0664 /sys/class/leds/lcd-backlight/brightness
+    chown system system /sys/class/leds/charging/brightness
+    chmod 0664 /sys/class/leds/charging/brightness
 
-   # Change ownership for Dynamic-CABC feature
-   chown system system /sys/class/graphics/fb0/cabc_mode
-   # Change ownership for for HBM feature
-   chown system system /sys/class/graphics/fb0/hbm
-   # Change ownership for for ACL feature
-   chown system system /sys/class/graphics/fb0/acl_mode
+    # Change ownership for Dynamic-CABC feature
+    chown system system /sys/class/graphics/fb0/cabc_mode
+    # Change ownership for for HBM feature
+    chown system system /sys/class/graphics/fb0/hbm
+    # Change ownership for for ACL feature
+    chown system system /sys/class/graphics/fb0/acl_mode
 
-   # Change ownership and permission for vibrator
-   chown system system /sys/class/timed_output/vibrator/enable
-   chmod 0660 /sys/class/timed_output/vibrator/enable
+    # Change ownership and permission for vibrator
+    chown system system /sys/class/timed_output/vibrator/enable
+    chmod 0660 /sys/class/timed_output/vibrator/enable
 
-   # Change ownership and permission for laser_sensor
-   chown system system /sys/kernel/range/enable_sar
-   chmod 0660 /sys/kernel/range/enable_sar
-   chown system system /sys/kernel/range/set_delay_ms
-   chmod 0660 /sys/kernel/range/set_delay_ms
-   chown system system /sys/kernel/range/near
-   chmod 0660 /sys/kernel/range/near
+    # Change ownership and permission for laser_sensor
+    chown system system /sys/kernel/range/enable_sar
+    chmod 0660 /sys/kernel/range/enable_sar
+    chown system system /sys/kernel/range/set_delay_ms
+    chmod 0660 /sys/kernel/range/set_delay_ms
+    chown system system /sys/kernel/range/near
+    chmod 0660 /sys/kernel/range/near
 
-   # Change the ownership of display TE files for tcmds
-   chown root oem_5004 /sys/class/graphics/fb0/te_enable
-   chown root oem_5004 /sys/class/graphics/fb0/frame_counter
+    # Change the ownership of display TE files for tcmds
+    chown root oem_5004 /sys/class/graphics/fb0/te_enable
+    chown root oem_5004 /sys/class/graphics/fb0/frame_counter
 
-   # FPC device parameter permissions
-   chown system oem_5004 /sys/bus/spi/devices/spi12.0/nav
-   chown system oem_5004 /sys/bus/spi/devices/spi12.0/clk_enable
-   chown system oem_5004 /sys/bus/spi/devices/spi12.0/dev_enable
-   chown system oem_5004 /sys/bus/spi/devices/spi12.0/irq
+    # FPC device parameter permissions
+    chown system oem_5004 /sys/bus/spi/devices/spi12.0/nav
+    chown system oem_5004 /sys/bus/spi/devices/spi12.0/clk_enable
+    chown system oem_5004 /sys/bus/spi/devices/spi12.0/dev_enable
+    chown system oem_5004 /sys/bus/spi/devices/spi12.0/irq
 
-   # Change ownership of aov related sysfs entries
-   wait /sys/kernel/aov/event
-   chown audio audio /sys/kernel/aov/trigger
-   chown audio audio /sys/kernel/aov/register
-   chown audio audio /sys/kernel/aov/event
+    # Change ownership of aov related sysfs entries
+    wait /sys/kernel/aov/event
+    chown audio audio /sys/kernel/aov/trigger
+    chown audio audio /sys/kernel/aov/register
+    chown audio audio /sys/kernel/aov/event
 
-   # Quiet binder logs
-   write /sys/module/binder/parameters/debug_mask 0x5
+    # Quiet binder logs
+    write /sys/module/binder/parameters/debug_mask 0x5
 
-   # Wifi firmware reload path
-   chown wifi wifi /sys/module/wlan/parameters/fwpath
+    # Wifi firmware reload path
+    chown wifi wifi /sys/module/wlan/parameters/fwpath
 
 on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
 
     mount_all fstab.qcom
-    swapon_all fstab.qcom
 
     # Keeping following partitions outside fstab file. As user may not have
     # these partition flashed on the device. Failure to mount any partition in fstab file
     # results in failure to launch late-start class.
 
     wait /dev/block/bootdevice/by-name/persist
-    mount ext4 /dev/block/bootdevice/by-name/persist /persist nosuid nodev barrier=1 defcontext=u:object_r:persist_file:s0
+    mount ext4 /dev/block/bootdevice/by-name/persist /persist nosuid nodev barrier=1
+    #defcontext=u:object_r:persist_file:s0
     restorecon_recursive /persist
     mkdir /persist/data 0700 system system
 
@@ -381,18 +379,22 @@ on fs
     mount ext4 /dev/block/bootdevice/by-name/dsp /dsp ro nosuid nodev barrier=1
 
     wait /dev/block/bootdevice/by-name/modem
-    mount ext4 /dev/block/bootdevice/by-name/modem /firmware ro nosuid nodev context=u:object_r:firmware_file:s0
+    mount ext4 /dev/block/bootdevice/by-name/modem /firmware ro nosuid nodev
+    #context=u:object_r:firmware_file:s0
 
     wait /dev/block/bootdevice/by-name/bluetooth
-    mount ext4 /dev/block/bootdevice/by-name/bluetooth /bt_firmware ro nosuid nodev context=u:object_r:bt_firmware_file:s0
+    mount ext4 /dev/block/bootdevice/by-name/bluetooth /bt_firmware ro nosuid nodev
+    #context=u:object_r:bt_firmware_file:s0
 
     # Mount modem FSG partition
     wait /dev/block/bootdevice/by-name/fsg
-    mount ext4 /dev/block/bootdevice/by-name/fsg /fsg ro nosuid nodev context=u:object_r:fsg_file:s0
+    mount ext4 /dev/block/bootdevice/by-name/fsg /fsg ro nosuid nodev
+    #context=u:object_r:fsg_file:s0
 
     #Mount customize partion
     wait /dev/block/bootdevice/by-name/customize
-    mount ext4 /dev/block/bootdevice/by-name/customize /customize ro discard nosuid nodev noatime nodiratime noexec defcontext=u:object_r:user_config_file:s0
+    mount ext4 /dev/block/bootdevice/by-name/customize /customize ro discard nosuid nodev noatime nodiratime noexec
+    #defcontext=u:object_r:user_config_file:s0
 
     # use /persist as phony PDS partition
     symlink /persist /pds
@@ -767,7 +769,7 @@ service init_wifi /wlan_carrier_bin.sh
 
 on nonencrypted
     setprop ro.kick.logcopy ${ro.bootreason}
-'
+
 on property:vold.decrypt=trigger_restart_framework
     setprop ro.kick.logcopy ${ro.bootreason}
 
@@ -776,12 +778,6 @@ service batt_health /system/bin/batt_health
     user oem_5001
     group oem_5001 cache net_admin log
     disabled
-
-on property:sys.boot_completed=1 && property:ro.boot.secure_hardware=0
-    start batt_health
-
-on property:persist.mot.demo_mode_charging=1
-    write /sys/class/power_supply/battery/device/force_demo_mode 1
 
 on property:ro.kick.logcopy=coldboot
     start apanic_copy
@@ -889,7 +885,7 @@ service mods_camd /system/bin/mods_camd
     class late_start
     user camera
     group camera system inet input graphics
-    rlimit 14 4 4
+    setrlimit 14 4 4
     ioprio rt 4
     disabled
 
@@ -1005,10 +1001,6 @@ service imsdatadaemon /system/bin/imsdatadaemon
 on property:sys.ims.QMI_DAEMON_STATUS=1
     start imsdatadaemon
 
-service cnd /system/bin/cnd
-    class late_start
-    socket cnd stream 660 root inet
-
 service port-bridge /system/bin/port-bridge
     class main
     user radio system
@@ -1074,7 +1066,7 @@ on property:ro.data.large_tcp_window_size=true
 on property:sys.sysctl.tcp_adv_win_scale=*
     write /proc/sys/net/ipv4/tcp_adv_win_scale ${sys.sysctl.tcp_adv_win_scale}
 
-service p2p_supplicant /system/bin/wpa_supplicant \
+service wpa_supplicant /vendor/bin/hw/wpa_supplicant \
     -ip2p0 -Dnl80211 -c/data/misc/wifi/p2p_supplicant.conf \
     -I/system/etc/wifi/p2p_supplicant_overlay.conf -N \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
@@ -1089,37 +1081,6 @@ service p2p_supplicant /system/bin/wpa_supplicant \
     socket wpa_wlan0 dgram 660 wifi wifi
     disabled
     oneshot
-
-service wpa_supplicant /system/bin/wpa_supplicant \
-    -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
-    -I/system/etc/wifi/wpa_supplicant_overlay.conf \
-    -O/data/misc/wifi/sockets \
-    -e/data/misc/wifi/entropy.bin -g@android:wpa_wlan0
-    #   we will start as root and wpa_supplicant will switch to user wifi
-    #   after setting up the capabilities required for WEXT
-    #   user wifi
-    #   group wifi inet keystore
-    class main
-    socket wpa_wlan0 dgram 660 wifi wifi
-    disabled
-    oneshot
-
-service wigig_supplicant /system/bin/wpa_supplicant \
-    -iwigig0 -Dnl80211 -c/data/misc/wifi/wigig_supplicant.conf \
-    -m/data/misc/wifi/wigig_p2p_supplicant.conf \
-    -O/data/misc/wifi/wigig_sockets \
-    -e/data/misc/wifi/wigig_entropy.bin -g@android:wpa_wigig0
-    #   we will start as root and wpa_supplicant will switch to user wifi
-    #   after setting up the capabilities required for WEXT
-    #   user wifi
-    #   group wifi inet keystore
-    class main
-    socket wpa_wigig0 dgram 660 wifi wifi
-    disabled
-    oneshot
-
-on property:wifi.fccutild.load.qcacld=true
-    insmod /system/lib/modules/qca_cld/qca_cld_wlan.ko con_mode=5
 
 service wlan_logging /system/bin/cnss_diag -q -f
     class main
@@ -1156,29 +1117,24 @@ on property:ro.data.large_tcp_window_size=true
     # Adjust socket buffer to enlarge TCP receive window for high bandwidth (e.g. DO-RevB)
     write /proc/sys/net/ipv4/tcp_adv_win_scale  2
 
-service ril-daemon /system/bin/rild
+service ril-daemon /vendor/bin/hw/rild
     class main
-    socket rild stream 660 root radio
-    socket sap_uim_socket1 stream 660 bluetooth bluetooth
-    socket rild-debug stream 660 radio system
-    socket cutback stream 660 media radio
-    user root
-    group radio cache inet misc audio log net_raw oem_2901 wifi compass
+    user radio
+    group radio cache inet misc audio log oem_2901 net_raw wifi compass
+    capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
 
-service ril-daemon2 /system/bin/rild -c 2
+service ril-daemon2 /vendor/bin/hw/rild -c 2
     class main
-    socket rild2 stream 660 root radio
-    socket rild-debug2 stream 660 radio system
-    user root
-    group radio cache inet misc audio sdcard_r sdcard_rw oem_2901 log
+    user radio
+    group radio cache inet misc audio log oem_2901 net_raw wifi compass
+    capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
 
-service ril-daemon3 /system/bin/rild -c 3
+service ril-daemon3 /vendor/bin/hw/rild -c 3
     class main
-    socket rild3 stream 660 root radio
-    socket rild-debug3 stream 660 radio system
-    user root
+    user radio
     disabled
-    group radio cache inet misc audio sdcard_r sdcard_rw oem_2901 log
+    group radio cache inet misc audio log oem_2901 net_raw wifi compass
+    capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
 
 #service msm_irqbalance /system/bin/msm_irqbalance -f /system/vendor/etc/msm_irqbalance.conf
 #    class core
@@ -1230,12 +1186,6 @@ service qseecomd /system/bin/qseecomd
     group root
     writepid /dev/cpuset/system-background/tasks
 
-service perfd /system/vendor/bin/perfd
-    class main
-    user root
-    disabled
-    writepid /dev/cpuset/system-background/tasks
-
 service thermal-engine /system/vendor/bin/thermal-engine
     class main
     user root
@@ -1258,11 +1208,6 @@ service adsprpcd /system/bin/adsprpcd
     class main
     user media
     group media
-
-service audiod /system/bin/audiod
-    class late_start
-    user system
-    group system
 
 service ppd /system/vendor/bin/mm-pp-dpps
     class late_start
