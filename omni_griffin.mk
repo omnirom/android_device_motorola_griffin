@@ -28,19 +28,15 @@ TARGET_BOOTANIMATION_SIZE := 1440p
 # Inherit from our custom product configuration
 $(call inherit-product, vendor/omni/config/common.mk)
 
-# for specific
-$(call inherit-product, vendor/motorola/griffin/griffin-vendor.mk)
+# Inherit from hardware-specific part of the product configuration
 $(call inherit-product, device/motorola/griffin/device.mk)
 
 # Time Zone data for recovery
 PRODUCT_COPY_FILES += \
     bionic/libc/zoneinfo/tzdata:root/system/usr/share/zoneinfo/tzdata
 
+# Overlays
 DEVICE_PACKAGE_OVERLAYS += device/motorola/griffin/overlay
-
-# Boot animation
-TARGET_SCREEN_HEIGHT := 2560
-TARGET_SCREEN_WIDTH := 1440
 
 # Device uses high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal
@@ -61,5 +57,3 @@ PRODUCT_BUILD_PROP_OVERRIDES += TARGET_DEVICE=griffin PRODUCT_NAME=griffin
 PRODUCT_BUILD_PROP_OVERRIDES += \
     BUILD_FINGERPRINT=motorola/griffin/griffin:7.0/NPLS25.86-30-8/8:user/release-keys \
     PRIVATE_BUILD_DESC="griffin-user 7.0 NPLS25.86-30-8 8 release-keys"
-
-TARGET_VENDOR := motorola
