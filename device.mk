@@ -66,19 +66,17 @@ PRODUCT_PACKAGES += \
 
 # Audio
 PRODUCT_PACKAGES += \
-    audio.primary.msm8996 \
+    audiod \
     audio.a2dp.default \
+    audio.primary.msm8996 \
     audio.r_submix.default \
     audio.usb.default \
     libaudio-resampler \
-    libqcomvisualizer \
-    libqcomvoiceprocessing \
-    libqcomvoiceprocessingdescriptors \
+    libvolumelistener \
+    tinymix \
     libqcompostprocbundle \
-    libtinyxml \
-    libtinycompress \
-    libaudioroute \
-    tinymix
+    libqcomvisualizer \
+    libqcomvoiceprocessing
 
 # Audio configuration
 PRODUCT_COPY_FILES += \
@@ -86,7 +84,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_platform_info.xml:system/etc/audio_platform_info.xml \
     $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf \
     $(LOCAL_PATH)/audio/listen_platform_info.xml:system/etc/listen_platform_info.xml \
-    $(LOCAL_PATH)/audio/mixer_paths.xml:system/etc/mixer_paths.xml \
+    $(LOCAL_PATH)/audio/mixer_paths.xml:system/vendor/etc/mixer_paths.xml \
     $(LOCAL_PATH)/audio/audio_ext_spkr.conf:system/etc/audio_ext_spkr.conf
 
 # Bluetooth
@@ -105,10 +103,12 @@ PRODUCT_PACKAGES += \
 
 # Display
 PRODUCT_PACKAGES += \
+    copybit.msm8996 \
     gralloc.msm8996 \
     hwcomposer.msm8996 \
     memtrack.msm8996 \
-    libgenlock
+    liboverlay \
+    libtinyxml
 
 # Ebtables
 PRODUCT_PACKAGES += \
@@ -152,15 +152,15 @@ PRODUCT_PACKAGES += \
     libc2dcolorconvert
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml \
-    $(LOCAL_PATH)/configs/media_codecs_performance.xml:system/etc/media_codecs_performance.xml \
+    $(LOCAL_PATH)/configs/media_codecs.xml:system/vendor/etc/media_codecs.xml \
+    $(LOCAL_PATH)/configs/media_codecs_performance.xml:system/vendor/etc/media_codecs_performance.xml \
     $(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml \
     $(LOCAL_PATH)/configs/media_profiles_rc.xml:system/etc/media_profiles_rc.xml
 
 PRODUCT_COPY_FILES += \
-    frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
-    frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
-    frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml
+    frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/vendor/etc/media_codecs_google_audio.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/vendor/etc/media_codecs_google_telephony.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/vendor/etc/media_codecs_google_video.xml
 
 # OMX
 PRODUCT_PACKAGES += \
@@ -215,7 +215,7 @@ PRODUCT_PACKAGES += \
     sensors.msm8996
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/sensors/sensor_def_qcomdev.conf:system/etc/sensors/sensor_def_qcomdev.conf \
+    $(LOCAL_PATH)/configs/sensors/sensor_def_qcomdev.conf:system/vendor/etc/sensors/sensor_def_qcomdev.conf \
     $(LOCAL_PATH)/configs/sensors/hals.conf:system/vendor/etc/sensors/hals.conf
 
 PRODUCT_PACKAGES += \
@@ -239,10 +239,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf \
     $(LOCAL_PATH)/wifi/hostapd.deny:system/etc/hostapd/hostapd.deny \
     $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
-    $(LOCAL_PATH)/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
-    $(LOCAL_PATH)/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
-    $(LOCAL_PATH)/wifi/p2p_supplicant.conf:system/etc/wifi/p2p_supplicant.conf \
-    $(LOCAL_PATH)/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
+    $(LOCAL_PATH)/wifi/p2p_supplicant_overlay.conf:system/vendor/etc/wifi/p2p_supplicant_overlay.conf \
+    $(LOCAL_PATH)/wifi/wpa_supplicant_overlay.conf:system/vendor/etc/wifi/wpa_supplicant_overlay.conf \
+    $(LOCAL_PATH)/wifi/p2p_supplicant.conf:system/vendor/etc/wifi/p2p_supplicant.conf \
+    $(LOCAL_PATH)/wifi/wpa_supplicant.conf:system/vendor/etc/wifi/wpa_supplicant.conf \
     kernel/motorola/msm8996/drivers/staging/qcacld-2.0/firmware_bin/WCNSS_cfg.dat:system/etc/firmware/wlan/qca_cld/WCNSS_cfg.dat
 
 PRODUCT_COPY_FILES += \
