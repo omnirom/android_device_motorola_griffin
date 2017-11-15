@@ -71,7 +71,8 @@ BOARD_CACHEIMAGE_PARTITION_SIZE    := 268435456
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
-
+# create some directories and symlinks
+BOARD_ROOT_EXTRA_FOLDERS := bt_firmware firmware persist
 
 # Display
 BOARD_USES_ADRENO := true
