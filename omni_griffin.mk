@@ -37,6 +37,7 @@ PRODUCT_COPY_FILES += \
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += device/motorola/griffin/overlay
+PRODUCT_PACKAGE_OVERLAYS += vendor/omni/overlay/CarrierConfig
 
 # Device uses high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal
