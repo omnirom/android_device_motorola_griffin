@@ -46,7 +46,6 @@ PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 PRODUCT_NAME := omni_griffin
 PRODUCT_BRAND := motorola
 PRODUCT_DEVICE := griffin
-PRODUCT_MODEL := XT1650
 PRODUCT_MANUFACTURER := motorola
 PRODUCT_GMS_CLIENTID_BASE := android-motorola
 

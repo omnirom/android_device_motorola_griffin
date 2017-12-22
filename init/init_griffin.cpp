@@ -26,6 +26,8 @@
  */
 
 #include <stdlib.h>
+#define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
+#include <sys/_system_properties.h>
 
 #include "vendor_init.h"
 #include "property_service.h"
@@ -37,11 +39,22 @@ using android::base::GetProperty;
 namespace android {
 namespace init {
 
+void property_override(char const prop[], char const value[])
+{
+    prop_info *pi;
+
+    pi = (prop_info*) __system_property_find(prop);
+    if (pi)
+        __system_property_update(pi, value, strlen(value));
+    else
+        __system_property_add(prop, strlen(prop), value, strlen(value));
+}
+
 /* Target-Specific Dalvik Heap & HWUI Configuration */
 void target_ram() {
     std::string ram;
 
-    ram = GetProperty("ro.boot.ram", "");
+    //ram = GetProperty("ro.boot.ram", "");
 
     // TODO: VZW has different settings here as they have more ram
 }
@@ -78,19 +91,19 @@ void vendor_load_properties()
     device_boot = GetProperty("ro.boot.device", "sheridan");
     property_set("ro.hw.device", device_boot.c_str());
 
-    property_set("ro.product.device", "griffin");
+    property_override("ro.product.device", "griffin");
 
     sku = GetProperty("ro.boot.hardware.sku", "XT1650-03");
-    property_set("ro.product.model", sku.c_str());
+    property_override("ro.product.model", sku.c_str());
 
     carrier = GetProperty("ro.boot.carrier", "reteu");
-    property_set("ro.carrie", carrier.c_str());
+    property_set("ro.carrier", carrier.c_str());
 
-//    radio = GetProperty("ro.boot.radio", "");
-//    property_set("ro.hw.radio", radio.c_str());
+    /*radio = GetProperty("ro.boot.radio", "");
+    property_set("ro.hw.radio", radio.c_str());*/
 
-    /* Common for all models */
-    property_set("ro.build.product", "griffin");
+    // Common for all models
+    property_override("ro.build.product", "griffin");
     target_ram();
     num_sims();
 
@@ -161,7 +174,6 @@ void vendor_load_properties()
     property_set("persist.eab.supported", "0");
     property_set("persist.rcs.supported", "0");
     property_set("persist.rcs.presence.provision", "0");
-
     device = GetProperty("ro.product.device", "griffin");
     ALOGI("Found sku id: %s setting build properties for %s device\n", sku.c_str(), device.c_str());
 }
