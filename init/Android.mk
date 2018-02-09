@@ -1,3 +1,5 @@
+ifeq ($(TARGET_INIT_VENDOR_LIB),libinit_griffin)
+
 LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
@@ -11,3 +13,4 @@ LOCAL_STATIC_LIBRARIES := \
     libbase liblog libutils
 
 include $(BUILD_STATIC_LIBRARY)
+endif

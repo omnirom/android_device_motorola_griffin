@@ -28,11 +28,14 @@
 #include <stdlib.h>
 #define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
 #include <sys/_system_properties.h>
-
-#include "vendor_init.h"
-#include "property_service.h"
 #include <utils/Log.h>
 #include <android-base/properties.h>
+#include <android-base/logging.h>
+
+#include "property_service.h"
+
+namespace android {
+namespace init {
 
 using android::base::GetProperty;
 using android::init::property_set;
@@ -83,18 +86,22 @@ void vendor_load_properties()
     std::string dualsim;
 
     platform = GetProperty("ro.board.platform", "msm8996");
+    LOG(INFO) << __func__ << "\n";
     if (platform != ANDROID_TARGET)
         return;
 
     device_boot = GetProperty("ro.boot.device", "sheridan");
+    LOG(INFO) << __func__ << "\n";
     property_set("ro.hw.device", device_boot.c_str());
 
     property_override("ro.product.device", "griffin");
 
     sku = GetProperty("ro.boot.hardware.sku", "XT1650-03");
+    LOG(INFO) << __func__ << "\n";
     property_override("ro.product.model", sku.c_str());
 
     carrier = GetProperty("ro.boot.carrier", "reteu");
+    LOG(INFO) << __func__ << "\n";
     property_set("ro.carrier", carrier.c_str());
 
     /*radio = GetProperty("ro.boot.radio", "");
@@ -175,3 +182,6 @@ void vendor_load_properties()
     device = GetProperty("ro.product.device", "griffin");
     ALOGI("Found sku id: %s setting build properties for %s device\n", sku.c_str(), device.c_str());
 }
+
+}  // namespace init
+}  // namespace android
