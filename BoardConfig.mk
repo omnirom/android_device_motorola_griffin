@@ -60,7 +60,7 @@ TARGET_HW_DISK_ENCRYPTION := true
 TARGET_CRYPTFS_HW_PATH := $(PLATFORM_PATH)/cryptfs_hw
 
 # create some directories and symlinks
-BOARD_ROOT_EXTRA_FOLDERS := bt_firmware firmware persist
+BOARD_ROOT_EXTRA_FOLDERS := bt_firmware firmware persist dsp fsg
 
 # CNE and DPM
 BOARD_USES_QCNE := true
@@ -175,9 +175,6 @@ BOARD_USES_QC_TIME_SERVICES := true
 # Recovery
 TARGET_RECOVERY_FSTAB := $(PLATFORM_PATH)/rootdir/etc/fstab.full
 
-# Root
-BOARD_ROOT_EXTRA_FOLDERS := bt_firmware dsp firmware fsg persist
-
 # Keystore
 TARGET_PROVIDES_KEYMASTER := true
 
@@ -187,7 +184,6 @@ USE_OPENGL_RENDERER := true
 
 # RIL
 PROTOBUF_SUPPORTED := true
-TARGET_RIL_VARIANT := caf
 
 # NFC
 BOARD_NFC_CHIPSET := pn544
@@ -195,7 +191,7 @@ BOARD_NFC_HAL_SUFFIX := $(TARGET_BOARD_PLATFORM)
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
-#BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy
+BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(PLATFORM_PATH)/bluetooth
