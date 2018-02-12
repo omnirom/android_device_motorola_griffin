@@ -26,7 +26,7 @@
  * OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-#define LOG_NDEBUG 1
+//#define LOG_NDEBUG 0
 
 #include <dlfcn.h>
 #include <fcntl.h>
@@ -42,10 +42,6 @@
 
 #define LOG_TAG "QCOM PowerHAL"
 #include <utils/Log.h>
-
-#ifndef INTERACTION_BOOST
-#define INTERACTION_BOOST
-#endif
 
 char scaling_gov_path[4][80] ={
     "sys/devices/system/cpu/cpu0/cpufreq/scaling_governor",
@@ -346,4 +342,9 @@ void undo_initial_hint_action()
             perf_lock_rel(1);
         }
     }
+}
+
+bool get_touchboost_enabled()
+{
+    return property_get_bool("ro.vendor.power.touchboost_enabled", true);
 }
