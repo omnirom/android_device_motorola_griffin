@@ -59,7 +59,7 @@ PRODUCT_COPY_FILES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    SnapdragonCamera \
+    Camera2 \
     libbson \
     libshim_cam_YuvSkia
 
@@ -102,8 +102,8 @@ PRODUCT_PACKAGES += \
     libbt-vendor
 
 # LineageActions
-PRODUCT_PACKAGES += \
-    LineageActions
+#PRODUCT_PACKAGES += \
+#    LineageActions
 
 # Connectivity Engine support (CNE)
 PRODUCT_PACKAGES += \
