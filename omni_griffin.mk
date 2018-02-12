@@ -30,10 +30,6 @@ $(call inherit-product, vendor/omni/config/common.mk)
 # Inherit from hardware-specific part of the product configuration
 $(call inherit-product, device/motorola/griffin/device.mk)
 
-# Time Zone data for recovery
-PRODUCT_COPY_FILES += \
-    bionic/libc/zoneinfo/tzdata:root/system/usr/share/zoneinfo/tzdata
-
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += device/motorola/griffin/overlay
 PRODUCT_PACKAGE_OVERLAYS += vendor/omni/overlay/CarrierConfig
