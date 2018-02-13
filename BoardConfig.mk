@@ -189,6 +189,9 @@ PROTOBUF_SUPPORTED := true
 BOARD_NFC_CHIPSET := pn544
 BOARD_NFC_HAL_SUFFIX := $(TARGET_BOARD_PLATFORM)
 
+# ANT+
+BOARD_ANT_WIRELESS_DEVICE := "qualcomm-uart"
+
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy

@@ -31,6 +31,24 @@
 },
 {
   "remote": "omnirom",
+  "repository": "android_external_ant-wireless_antradio-library",
+  "target_path": "external/ant-wireless/antradio-library",
+  "revision": "android-8.1"
+},
+{
+  "remote": "omnirom",
+  "repository": "android_external_ant-wireless_ant_service",
+  "target_path": "external/ant-wireless/ant_service",
+  "revision": "android-8.1"
+},
+{
+  "remote": "omnirom",
+  "repository": "android_external_ant-wireless_ant_native",
+  "target_path": "external/ant-wireless/ant_native",
+  "revision": "android-8.1"
+},
+{
+  "remote": "omnirom",
   "repository": "android_vendor_nxp-nfc_opensource_frameworks",
   "target_path": "vendor/nxp-nfc/opensource/frameworks",
   "revision": "android-8.1"
