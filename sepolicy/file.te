@@ -39,6 +39,3 @@ type fpc_socket, file_type, data_file_type;
 type sysfs_fpc, fs_type, sysfs_type;
 type debugfs_wlan, debugfs_type, fs_type;
 type sysfs_spi, fs_type, sysfs_type;
-
-# sdcard
-type sdcard_posix, sdcard_type, fs_type, mlstrustedobject;
