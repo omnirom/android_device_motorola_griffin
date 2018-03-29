@@ -113,3 +113,7 @@
 /sys/kernel/debug/rmt_storage(/.*)?              u:object_r:debugfs_rmt_storage:s0
 /sys/kernel/debug/rpm_stats                      u:object_r:debugfs_rpm:s0
 /sys/kernel/debug/rpm_master_stats               u:object_r:debugfs_rpm:s0
+
+# Health HAL
+/(vendor|system/vendor)/bin/hw/android\.hardware\.health@2\.0-service\.griffin          u:object_r:hal_health_default_exec:s0
+/persist/battery(/.*)?  u:object_r:persist_battery_file:s0
