@@ -143,7 +143,7 @@ PRODUCT_COPY_FILES += \
 
 # IDC
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/idc/fpc1020.idc:$(TARGET_COPY_OUT_VENDOR)/usr/idc/fpc1020.idc
+    $(LOCAL_PATH)/configs/idc/fpc1020.idc:$(TARGET_COPY_OUT_VENDOR)/usr/idc/fpc1020.idc
 
 # IMS
 PRODUCT_PACKAGES += \
