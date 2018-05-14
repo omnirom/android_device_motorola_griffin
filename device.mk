@@ -60,6 +60,7 @@ PRODUCT_COPY_FILES += \
 # Camera
 PRODUCT_PACKAGES += \
     Camera2 \
+    SnapdragonCamera2 \
     libbson \
     libshim_cam_YuvSkia
 
