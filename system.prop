@@ -103,7 +103,7 @@ persist.hwc.enable_vds=1
 ro.hwui.texture_cache_flushrate=0.4
 ro.opengles.version=196609
 ro.sf.lcd_density=640
-
+debug.sf.enable_hwc_vds=1
 
 ## Media
 media.aac_51_output_enabled=true
