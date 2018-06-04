@@ -27,6 +27,7 @@ PLATFORM_PATH := device/motorola/griffin
 TARGET_FS_CONFIG_GEN += \
     $(PLATFORM_PATH)/fs_config/config.fs \
     $(PLATFORM_PATH)/fs_config/mot_aids.fs
+TARGET_SPECIFIC_HEADER_PATH := $(PLATFORM_PATH)/include
 
 # OTA
 TARGET_OTA_ASSERT_DEVICE := griffin,griffin_cn,sheridan,xt1650,xt1650-01,xt1650-03,xt1650-05
@@ -124,6 +125,7 @@ TARGET_INIT_VENDOR_LIB := libinit_griffin
 TARGET_RECOVERY_DEVICE_MODULES := libinit_griffin
 
 # Audio
+TARGET_QCOM_AUDIO_VARIANT := caf-msm8996
 AUDIO_FEATURE_ENABLED_EXT_HDMI := true
 AUDIO_FEATURE_ENABLED_EXTN_FLAC_DECODER := true
 AUDIO_FEATURE_ENABLED_HIFI_AUDIO := true
