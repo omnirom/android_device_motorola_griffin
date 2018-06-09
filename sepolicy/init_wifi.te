@@ -4,3 +4,4 @@ init_daemon_domain(init_wifi)
 
 allow init_wifi sysfs:file { open write };
 allow init_wifi vendor_toolbox_exec:file execute_no_trans;
+allow init_wifi vendor_file:file entrypoint;

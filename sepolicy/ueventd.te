@@ -3,6 +3,7 @@ allow ueventd device:chr_file { relabelfrom relabelto };
 allow ueventd gbfirmware_file:dir search;
 allow ueventd gbfirmware_file:file { getattr open read };
 allow ueventd input_device:chr_file { relabelfrom relabelto };
+allow ueventd mba_debug_dev:blk_file { open read };
 allow ueventd mods_camd_device:chr_file { relabelfrom relabelto };
 allow ueventd video_device:chr_file { relabelfrom relabelto };
 allow ueventd sysfs_greybus:file { open write };
