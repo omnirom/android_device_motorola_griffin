@@ -1,0 +1,2 @@
+allow time_deamon system_data_file:file { open read };
+allow time_deamon system_data_file:lnk_file read;
