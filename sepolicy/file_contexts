@@ -88,8 +88,8 @@
 
 # Light HAL
 /(vendor|system/vendor)/bin/hw/android\.hardware\.light@2\.0-service.griffin                                     u:object_r:hal_light_default_exec:s0
-/sys/devices/soc/900000.qcom,mdss_mdp/900000.qcom,mdss_mdp:qcom,mdss_fb_primary/leds/lcd-backlight/brightness	   u:object_r:sysfs_leds:s0
-/sys/devices/soc/leds-qpnp-9/leds/charging/brightness	                                                           u:object_r:sysfs_leds:s0
+/sys/devices/soc/900000.qcom,mdss_mdp/900000.qcom,mdss_mdp:qcom,mdss_fb_primary/leds/lcd-backlight/brightness	 u:object_r:sysfs_leds:s0
+/sys/devices/soc/leds-qpnp-9/leds/charging/brightness	                                                         u:object_r:sysfs_leds:s0
 
 # SPI
 /sys/bus/spi/devices                                                u:object_r:sysfs_spi:s0
@@ -100,3 +100,6 @@
 # Camera
 /(vendor|system/vendor)/bin/hw/motorola.hardware.camera.provider@2.4-service                                     u:object_r:hal_camera_default_exec:s0
 /(vendor|system/vendor)/bin/hw/motorola.hardware.mods_camera.provider@2.4-service                                u:object_r:hal_camera_default_exec:s0
+
+# Power HAL
+/(vendor|system/vendor)/bin/hw/android\.hardware\.power@1\.0-service\.griffin                                    u:object_r:hal_power_default_exec:s0
