@@ -728,6 +728,9 @@ on post-fs-data
     # Start Camera Mods Daemon
     start mods_camd
 
+    # default country code
+    setprop ro.boot.wificountrycode 00 
+
 service qcomsysd /vendor/bin/qcom-system-daemon
     class main
     user root
