@@ -563,8 +563,6 @@ on post-fs-data
 
     # Create /data/vendor/time folder for time-services
     mkdir /data/vendor/time/ 0700 system system
-    # backward comp
-    symlink /data/vendor/time /data/time
 
     mkdir /data/vendor/audio/ 0770 media audio
 
