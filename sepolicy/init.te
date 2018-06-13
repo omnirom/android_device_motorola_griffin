@@ -47,4 +47,6 @@ allow init hwservicemanager:binder { call transfer };
 allow init ion_device:chr_file ioctl;
 allow init video_device:chr_file write;
 
+allow init time_data_file:lnk_file read;
+
 allow init vendor_file:file execute;
