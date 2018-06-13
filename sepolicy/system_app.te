@@ -2,3 +2,8 @@ allow system_app fingerprintd:binder call;
 allow system_app mods_service:service_manager { add find };
 allow system_app sysfs_homebutton:file rw_file_perms;
 allow system_app wificond:binder call;
+
+allow system_app time_data_file:dir { search write };
+allow system_app time_data_file:file rw_file_perms;
+
+set_prop(system_app, timekeep_prop);
