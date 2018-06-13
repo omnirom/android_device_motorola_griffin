@@ -561,8 +561,9 @@ on post-fs-data
     mkdir /data/fota 0771
     chown system system /data/fota
 
-    # Create /data/vendor/time folder for time-services
-    mkdir /data/vendor/time/ 0700 system system
+    # Create data for timekeep
+    mkdir /data/time/ 0700 system system
+    chmod 0770 /data/time/ats_2
 
     mkdir /data/vendor/audio/ 0770 media audio
 
@@ -1181,14 +1182,12 @@ service thermal-engine /vendor/bin/thermal-engine
    socket thermal-recv-passive-client stream 0666 system system
    socket thermal-send-rule stream 0660 system system
    group root
-   socket thermal-send-client stream 0666 system system
-   socket thermal-recv-client stream 0660 system system
-   socket thermal-recv-passive-client stream 0666 system system
 
-service time_daemon /vendor/bin/time_daemon
-    class main
+service timekeep /system/vendor/bin/timekeep restore
+    class late_start
     user root
     group root
+    oneshot
 
 service adsprpcd /vendor/bin/adsprpcd
     class main
