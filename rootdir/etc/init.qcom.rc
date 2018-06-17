@@ -791,8 +791,7 @@ service motosh /vendor/bin/motosh boot
 on property:ro.carrier=*
     start init_wifi
 
-service init_wifi /vendor/bin/wlan_carrier_bin.sh
-    seclabel u:r:init_wifi:s0
+service init_wifi /vendor/bin/sh /vendor/bin/wlan_carrier_bin.sh
     class main
     user root
     group root
