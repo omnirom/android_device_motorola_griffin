@@ -19,7 +19,7 @@ allow rild hal_wifi_supplicant_default:unix_dgram_socket sendto;
 allow rild system_data_file:dir { open read };
 allow rild wpa_socket:sock_file write;
 allow rild fsg_file:lnk_file read;
-allow rild system_data_file:sock_file write;
+allow rild system_data_file:sock_file { write create setattr unlink };
 allow rild wifi_data_file:dir search;
 allow rild fsg_file:file read;
 allow rild vendor_file:file execute_no_trans;

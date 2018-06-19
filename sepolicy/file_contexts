@@ -37,6 +37,8 @@
 /dev/motosh                                              u:object_r:sensors_device:s0
 /dev/motosh_as                                           u:object_r:sensors_device:s0
 /dev/motosh_ms                                           u:object_r:sensors_device:s0
+/data/misc/sensorhub/akmd_set.bin                        u:object_r:sensors_data_file:s0
+/data/misc/sensorhub/gyro_cal.bin                        u:object_r:sensors_data_file:s0
 
 #FSG
 /dev/sdc4                                                u:object_r:firmware_file:s0
@@ -107,3 +109,7 @@
 
 # TimeKeep
 /system/vendor/bin/timekeep                                     u:object_r:timekeep_exec:s0
+
+/sys/kernel/debug/rmt_storage(/.*)?              u:object_r:debugfs_rmt_storage:s0
+/sys/kernel/debug/rpm_stats                      u:object_r:debugfs_rpm:s0
+/sys/kernel/debug/rpm_master_stats               u:object_r:debugfs_rpm:s0
