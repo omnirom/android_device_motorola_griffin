@@ -107,3 +107,7 @@
 
 # TimeKeep
 /system/vendor/bin/timekeep                                     u:object_r:timekeep_exec:s0
+
+/sys/kernel/debug/rmt_storage(/.*)?              u:object_r:debugfs_rmt_storage:s0
+/sys/kernel/debug/rpm_stats                      u:object_r:debugfs_rpm:s0
+/sys/kernel/debug/rpm_master_stats               u:object_r:debugfs_rpm:s0
