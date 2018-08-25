@@ -51,7 +51,7 @@ persist.vendor.audio.fluence.voicecomm=true
 
 ## Bluetooth
 bluetooth.hfp.client=1
-qcom.bluetooth.soc=rome
+vendor.qcom.bluetooth.soc=rome
 qcom.bt.le_dev_pwr_class=1
 ro.bluetooth.hfp.ver=1.6
 
