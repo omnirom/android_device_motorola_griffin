@@ -65,7 +65,6 @@ PRODUCT_COPY_FILES += \
 # Camera
 PRODUCT_PACKAGES += \
     Camera2 \
-    SnapdragonCamera2 \
     libbson
 
 # Audio
@@ -111,8 +110,8 @@ PRODUCT_PACKAGES += \
     libbt-vendor
 
 # LineageActions
-#PRODUCT_PACKAGES += \
-#    LineageActions
+PRODUCT_PACKAGES += \
+    LineageActions
 
 # Connectivity Engine support (CNE)
 PRODUCT_PACKAGES += \
@@ -210,8 +209,7 @@ PRODUCT_PACKAGES += \
     nqnfcee_access.xml \
     nqnfcse_access.xml \
     SecureElement \
-    Tag \
-    android.hardware.nfc@1.1-service
+    Tag
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/nfc/libnfc-nci.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nci.conf \
@@ -295,7 +293,7 @@ PRODUCT_PACKAGES += \
 
 # Treble
 PRODUCT_PACKAGES += \
-    vndk-sp \
+    vndk-sp
 
 # WiFi
 PRODUCT_PACKAGES += \
