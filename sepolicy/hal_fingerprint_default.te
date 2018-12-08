@@ -12,3 +12,9 @@ allow hal_fingerprint_default fpc_data_file:dir { add_name remove_name write sea
 allow hal_fingerprint_default fpc_data_file:sock_file { create unlink };
 
 allow hal_fingerprint_default fpc_socket:sock_file unlink;
+
+allow hal_fingerprint_default fingerprintd_data_file:dir { rw_file_perms search add_name remove_name };
+allow hal_fingerprint_default fingerprintd_data_file:file { append create setattr rw_file_perms unlink };
+
+allow hal_fingerprint_default system_data_file:dir rw_file_perms;
+
