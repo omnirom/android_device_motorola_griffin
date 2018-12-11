@@ -13,6 +13,7 @@ allow vendor_init persist_file:filesystem { getattr };
 allow vendor_init rootfs:dir { create setattr relabelfrom };
 allow vendor_init sensors_data_file:dir { setattr create };
 allow vendor_init system_data_file:dir { create rw_dir_perms setattr };
+allow vendor_init system_data_file:file { r_file_perms };
 allow vendor_init tombstone_data_file:dir { create rw_dir_perms search setattr };
 allow vendor_init time_data_file:dir { setattr create };
 
