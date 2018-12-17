@@ -1,10 +1,9 @@
 # Audio
 PRODUCT_PACKAGES += \
-    android.hardware.audio@4.0-impl \
+    android.hardware.audio@2.0-impl \
     android.hardware.audio@2.0-service \
-    android.hardware.audio.effect@4.0-impl \
-    android.hardware.soundtrigger@2.0-impl \
-    android.hardware.soundtrigger@2.0-service
+    android.hardware.audio.effect@2.0-impl \
+    android.hardware.soundtrigger@2.0-impl
 
 # Bluetooth
 PRODUCT_PACKAGES += \
@@ -30,7 +29,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl \
     android.hardware.drm@1.0-service \
-    android.hardware.drm@1.0-service.widevine
+    android.hardware.drm@1.1-service.clearkey
 
 # Fingerprint
 PRODUCT_PACKAGES += \
@@ -84,6 +83,10 @@ PRODUCT_PACKAGES += \
 # RenderScript
 PRODUCT_PACKAGES += \
     android.hardware.renderscript@1.0-impl
+
+# RIL
+PRODUCT_PACKAGES += \
+    android.hardware.radio.config@1.0
 
 # Sensors
 PRODUCT_PACKAGES += \

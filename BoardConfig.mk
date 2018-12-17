@@ -61,7 +61,7 @@ TARGET_HW_DISK_ENCRYPTION := true
 TARGET_CRYPTFS_HW_PATH := $(PLATFORM_PATH)/cryptfs_hw
 
 # create some directories and symlinks
-BOARD_ROOT_EXTRA_FOLDERS := bt_firmware firmware persist dsp fsg
+BOARD_ROOT_EXTRA_FOLDERS := persist
 
 # CNE and DPM
 BOARD_USES_QCNE := true
@@ -91,6 +91,9 @@ BOARD_USES_ADRENO := true
 MAX_EGL_CACHE_KEY_SIZE := 12*1024
 MAX_EGL_CACHE_SIZE := 2048*1024
 MAX_VIRTUAL_DISPLAY_DIMENSION := 4096
+
+NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
+
 TARGET_CONTINUOUS_SPLASH_ENABLED := true
 TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
 TARGET_USES_ION := true
@@ -98,14 +101,13 @@ TARGET_USES_NEW_ION_API := true
 TARGET_USES_C2D_COMPOSITION := true
 SF_VSYNC_EVENT_PHASE_OFFSET_NS := 2000000
 VSYNC_EVENT_PHASE_OFFSET_NS := 6000000
-TARGET_USES_COLOR_METADATA := true
 TARGET_USES_HWC2 := true
 TARGET_USES_GRALLOC1 := true
 
 # Kernel
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 cma=32M@0-0xffffffff
-BOARD_KERNEL_CMDLINE += cnsscore.pcie_link_down_panic=1 androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE += cnsscore.pcie_link_down_panic=1 androidboot.selinux=permissive firmware_class.path=/vendor/firmware_mnt/image
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_TAGS_OFFSET := 0x00000100
 BOARD_RAMDISK_OFFSET     := 0x01000000

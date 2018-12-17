@@ -28,6 +28,7 @@ write_headers
 
 # The blobs
 write_makefiles "$MY_DIR"/proprietary-files.txt true
+write_makefiles "$MY_DIR"/proprietary-files_griffin.txt true
 
 # We are done!
 write_footers
