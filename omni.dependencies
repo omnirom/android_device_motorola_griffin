@@ -48,21 +48,33 @@
   "revision": "android-9.0"
  },
  {
-   "remote": "omnirom",
-   "repository": "android_hardware_sony_timekeep",
-   "target_path": "hardware/sony/timekeep",
-   "revision": "android-9.0"
- },
- {
   "remote": "omnirom",
   "repository": "android_external_bson",
   "target_path": "external/bson",
   "revision": "android-9.0"
  },
  {
-   "remote": "omnirom",
-   "repository": "android_packages_apps_SnapdragonCamera2",
-   "target_path": "packages/apps/SnapdragonCamera2",
-   "revision": "android-9.0"
+  "remote": "omnirom",
+  "repository": "android_vendor_qcom_opensource_commonsys",
+  "target_path": "vendor/qcom/opensource/commonsys",
+  "revision": "android-9.0"
+ },
+ {
+  "remote": "omnirom",
+  "repository": "vendor_qcom_opensource_dataservices",
+  "target_path": "vendor/qcom/opensource/dataservices",
+  "revision": "android-9.0"
+ },
+ {
+  "remote": "omnirom",
+  "repository": "android_vendor_nxp-nfc_interfaces_opensource_nfc",
+  "target_path": "vendor/nxp/opensource/interfaces/nfc",
+  "revision": "android-9.0"
+ },
+ {
+  "remote": "omnirom",
+  "repository": "android_vendor_nxp_opensource_halimpl",
+  "target_path": "vendor/nxp/opensource/halimpl",
+  "revision": "android-9.0"
  }
 ]
