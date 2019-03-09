@@ -59,6 +59,7 @@ ENABLE_CPUSETS := true
 # Crypto
 TARGET_HW_DISK_ENCRYPTION := true
 TARGET_CRYPTFS_HW_PATH := $(PLATFORM_PATH)/cryptfs_hw
+TARGET_USES_METADATA_AS_FDE_KEY := true
 
 # create some directories and symlinks
 BOARD_ROOT_EXTRA_FOLDERS := persist
