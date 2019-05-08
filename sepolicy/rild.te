@@ -30,3 +30,4 @@ allow rild proc:file { open read };
 
 allow rild rild_exec:file execute_no_trans;
 allow rild shell_exec:file { open read execute };
+allow rild vendor_default_prop:property_service set;

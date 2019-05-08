@@ -29,3 +29,4 @@ allow rmt_storage unlabeled:file { open read };
 
 allow rmt_storage debugfs_rmt_storage:dir search;
 allow rmt_storage debugfs_rmt_storage:file { write open };
+allow rmt_storage sysfs:file { open read };
