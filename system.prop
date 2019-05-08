@@ -107,7 +107,7 @@ vidc.enc.dcvs.extra-buff-count=2
 vendor.vidc.enc.disable.pq=true
 
 ## Mods
-sys.mod.platformsdkversion=250
+sys.mod.platformsdkversion=281
 
 ## Netmgr
 ro.vendor.use_data_netmgrd=true
