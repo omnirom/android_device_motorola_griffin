@@ -2,4 +2,49 @@
 <resources>
     <string name="screen_gestures_panel_summary" translatable="false">Special Device Gestures</string>
     <string name="moto_gestures_panel_title">Moto Gestures</string>
+    <string name="device_settings_app_name">Advanced settings</string>
+    <string name="ambient_display_title">Ambient display</string>
+    <string name="ambient_display_enable_title">Ambient display</string>
+    <string name="ambient_display_enable_summary">Wake screen when you receive notifications</string>
+    <string name="ambient_display_gestures_title">Ambient display gestures</string>
+    <string name="ambient_display_gestures_summary">Additional gestures to wake the screen</string>
+    <string name="ambient_display_summary">Wake screen when you receive notifications</string>
+    <string name="ambient_display_summary_on">Screen will wake when you receive notifications</string>
+    <string name="ambient_display_summary_off">Screen will not wake when you receive notifications</string>
+    <string name="ambient_display_always_on_title">Always on</string>
+    <string name="ambient_display_always_on_summary">Show time, notification icons, and other info. Increased battery usage.</string>
+    <string name="pick_up_gesture_title">Pick-up</string>
+    <string name="pick_up_gesture_summary">Pulse notifications on pick-up</string>
+    <string name="actions_title">Actions</string>
+    <string name="screen_gestures_panel_title">Gestures</string>
+    <string name="fingerprint_title">Fingerprint</string>
+    <string name="hand_wave_gesture_title">Hand wave</string>
+    <string name="hand_wave_gesture_summary">Pulse notifications on hand wave</string>
+    <string name="hand_wave_gesture_flat_title">Detect orientation</string>
+    <string name="hand_wave_gesture_flat_summary">Pulse only if the phone is lying face up on a flat surface</string>
+
+    <!-- Camera gesture -->
+    <string name="camera_gesture_title">Double-twist</string>
+    <string name="camera_gesture_summary">Open camera when using the double twist gesture</string>
+
+    <!-- Chop-chop gesture -->
+    <string name="chop_chop_gesture_title">Chop-chop</string>
+    <string name="chop_chop_gesture_summary">Toggle flashlight when using the chop-chop gesture</string>
+
+    <!-- Hand wave silencer gesture -->
+    <string name="hand_wave_silencer_title">Wave to silence</string>
+    <string name="hand_wave_silencer_summary">Silence incoming calls by waving your hand across the screen</string>
+
+    <!-- Flip to mute gesture -->
+    <string name="flip_to_mute_title">Flip for Do Not Disturb</string>
+    <string name="flip_to_mute_summary">Place the phone face down to silence notifications and calls</string>
+
+    <!-- Do Not Disturb access -->
+    <string name="dnd_access">Please, give Do Not Disturb access to CMActions in order to use this feature.</string>
+
+    <!-- Lift to silence gesture -->
+    <string name="lift_to_silence_title">Pick up to stop ringing</string>
+    <string name="lift_to_silence_summary">Lift the phone to silence incoming calls. It only works when your phone starts flat</string>
+    <string name="fingerprint_wakeup_title">Fingerprint wake-up</string>
+    <string name="fingerprint_wakeup_summary">Allow the fingerprint sensor to wake the device while the screen is off</string>
 </resources>
