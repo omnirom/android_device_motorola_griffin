@@ -175,14 +175,6 @@ on boot
     #Create NETMGR daemon socket area
     mkdir /dev/socket/netmgr 0750 radio radio
 
-    # update access for VR & Sustained Mode
-    chown system system /sys/class/kgsl/kgsl-3d0/devfreq/max_freq
-    chmod 0660 /sys/class/kgsl/kgsl-3d0/devfreq/max_freq
-    chown system system /sys/class/kgsl/kgsl-3d0/devfreq/min_freq
-    chmod 0660 /sys/class/kgsl/kgsl-3d0/devfreq/min_freq
-    chown system system /sys/class/devfreq/soc:qcom,gpubw/min_freq
-    chmod 0660 /sys/class/devfreq/soc:qcom,gpubw/min_freq
-
     # Change permission for type C params
     chown root oem_5004 /sys/devices/soc/75b5000.i2c/i2c-7/7-0022/CC_state
     chown root oem_5004 /sys/devices/soc/75b5000.i2c/i2c-7/7-0022/enable_vconn
