@@ -996,8 +996,11 @@ service vendor.wlan_logging /vendor/bin/cnss_diag -q -f
     disabled
     oneshot
 
-service vendor.cnss-daemon /vendor/bin/cnss-daemon -n
+service vendor.cnss-daemon /vendor/bin/cnss-daemon -n -l
     class late_start
+    user system
+    group system inet net_admin wifi
+    capabilities NET_ADMIN
 
 service vendor.loc_launcher /vendor/bin/loc_launcher
     class late_start
@@ -1065,6 +1068,7 @@ on property:init.svc.vendor.per_mgr=running
 
 on property:sys.shutdown.requested=*
     stop vendor.per_proxy
+    stop cnss-daemon
 
 service vendor.mdm_helper /vendor/bin/mdm_helper
     class core
